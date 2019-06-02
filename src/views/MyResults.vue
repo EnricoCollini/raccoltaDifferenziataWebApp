@@ -59,6 +59,7 @@
 
 <script>
 import { GChart } from "vue-google-charts";
+import { client } from "../utils/httpClient";
 
 export default {
   components: {
@@ -99,6 +100,12 @@ export default {
       ]
     };
   },
+  mounted() {
+    this.fetchData();
+    setInterval(() => {
+      this.fetchData();
+    }, 3000);
+  },
   computed: {
     //funcntion that calculates the total kg material recycled
     total: function() {
@@ -115,7 +122,15 @@ export default {
       ];
     }
   },
-  methods: {}
+  methods: {
+    fetchData() {
+      client
+        .fetch('*[_type == "rifiuti" && mail==$mail]', {
+          mail: "encollini@gmail.com"
+        })
+        .then(response => console.log(response));
+    }
+  }
 };
 </script>
 

@@ -21,10 +21,22 @@
 <script>
 import netlify from "netlify-identity-widget";
 
+import User from "../utils/userClass";
+
 export default {
   name: "home",
+  data() {
+    return {
+      currentUser: new User()
+    };
+  },
   methods: {
     login() {
+      if (this.currentUser.logged) {
+        console.log("già loggato");
+        return;
+      }
+
       netlify.init();
       netlify.open(); // open the modal
     }

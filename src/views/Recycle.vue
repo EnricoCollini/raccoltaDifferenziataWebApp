@@ -54,7 +54,7 @@
           </b-form-group>
 
           <!-- ----SUBMIT BUTTON----- -->
-          <b-button type="submit" variant="primary">Submit</b-button>
+          <b-button @click.prevent="onSubmit" variant="primary">Submit</b-button>
         </b-form>
         <!-- ----RESULTS DISPLAY----- -->
         <b-card class="mt-3" header="Form Data Result">
@@ -66,24 +66,47 @@
 </template>
 
 <script>
+import { client } from "../utils/httpClient";
+import { version } from "punycode";
+import User from "../utils/userClass";
+//  new User().mail
 export default {
   data() {
     return {
       // FORM DATAS: ORGANICO VETRO IMBALLAGGI CARTA
       form: {
-        organico: "",
-        vetro: "",
-        imballaggi: "",
-        carta: ""
+        organico: 0,
+        vetro: 0,
+        imballaggi: 0,
+        carta: 0
       },
       show: true
     };
   },
+  mounted() {
+    client
+      .fetch('*[_type == "rifiuti" && mail=="encollini@gmail.com"]')
+      .then(response => console.log(response));
+  },
+
   methods: {
     // SUMBIT FORM FUNCTION
-    onSubmit(evt) {
-      evt.preventDefault();
-      alert(JSON.stringify(this.form));
+    onSubmit() {
+      let { carta, organico, imballaggi, vetro } = this.form;
+
+      client
+        .create({
+          _type: "rifiuti",
+          carta: parseInt(carta),
+          dataRiciclaggio: new Date(),
+          imballaggi: parseInt(imballaggi),
+          mail: "encollini@gmail.com",
+          organico: parseInt(organico),
+          vetro: parseInt(vetro)
+        })
+        .then(res => {
+          console.log(`form was created, document ID is ${res._id}`);
+        });
     },
     // ON RESET FORM FUNCTION
     onReset(evt) {
