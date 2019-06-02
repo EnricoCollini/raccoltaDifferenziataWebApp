@@ -18,7 +18,7 @@ Vue.use(VueGoogleCharts)
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 
-delete L.Icon.Default.prototype._getIconUrl
+// delete L.Icon.Default.prototype._getIconUrl
 // eslint-disable-next-line  
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
