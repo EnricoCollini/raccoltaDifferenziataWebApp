@@ -14,8 +14,23 @@
       sub-title="This web application allows you to find ecostations and monitor your contribution to the world!
       Results graphs and trophies are waiting for you!"
     ></b-card>
+    <button @click="login">ciaoneee</button>
   </div>
 </template>
+
+<script>
+import netlify from "netlify-identity-widget";
+
+export default {
+  name: "home",
+  methods: {
+    login() {
+      netlify.init();
+      netlifyIdentity.open(); // open the modal
+    }
+  }
+};
+</script>
 
 
 

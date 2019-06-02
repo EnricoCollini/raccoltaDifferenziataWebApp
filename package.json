@@ -12,6 +12,7 @@
     "bootstrap-vue": "^2.0.0-rc.21",
     "core-js": "^2.6.5",
     "leaflet": "^1.5.1",
+    "netlify-identity-widget": "^1.5.4",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
     "vue-axios": "^2.1.4",
