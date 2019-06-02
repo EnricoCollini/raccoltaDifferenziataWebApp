@@ -75,10 +75,12 @@ export default {
         }
       },
       //Types
-      organico: 25,
-      vetro: 65,
-      carta: 8,
-      imballaggi: 12,
+      organico: 0,
+      vetro: 0,
+      carta: 0,
+      imballaggi: 0,
+
+      results: [],
 
       sliding: null,
       //TROPHIES OBJECTS
@@ -102,9 +104,9 @@ export default {
   },
   mounted() {
     this.fetchData();
-    setInterval(() => {
-      this.fetchData();
-    }, 3000);
+    //setInterval(() => {
+    //  this.fetchData();
+    //}, 3000);
   },
   computed: {
     //funcntion that calculates the total kg material recycled
@@ -128,7 +130,23 @@ export default {
         .fetch('*[_type == "rifiuti" && mail==$mail]', {
           mail: "encollini@gmail.com"
         })
-        .then(response => console.log(response));
+        .then(response => {
+          console.log(response);
+          this.results = response;
+          this.organico = 0;
+          this.imballaggi = 0;
+          this.carta = 0;
+          this.vetro = 0;
+          for (let i = 0; i < this.results.length; i++) {
+            console.log(this.results[i].organico);
+            this.organico += parseInt(this.results[i].organico);
+            this.carta += parseInt(this.results[i].carta);
+            this.imballaggi += parseInt(this.results[i].imballaggi);
+            this.vetro += parseInt(this.results[i].vetro);
+          }
+          {
+          }
+        });
     }
   }
 };
