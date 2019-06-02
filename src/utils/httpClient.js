@@ -9,6 +9,7 @@ const client = sanityClient({
     token: process.env.VUE_APP_SANITY_TOKEN
 })
 
+
 export { client }
 
 
