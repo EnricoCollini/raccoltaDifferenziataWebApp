@@ -1,0 +1,31 @@
+{
+    "objects": [
+        {
+            "indirizzo": "via di prova1",
+            "orario": "lun-ve 8:00-18:00",
+            "tipo": "Ecotappa",
+            "coordinate": [
+                43.77543,
+                11.248576
+            ]
+        },
+        {
+            "indirizzo": "via di json",
+            "orario": "lun-ve 8:00-18:00",
+            "tipo": "Ecotappa",
+            "coordinate": [
+                43.77543,
+                11.26
+            ]
+        },
+        {
+            "indirizzo": "via di prova2",
+            "orario": "mar 8:00-18:00",
+            "tipo": "Ecostazione",
+            "coordinate": [
+                43.8,
+                11.248576
+            ]
+        }
+    ]
+}
