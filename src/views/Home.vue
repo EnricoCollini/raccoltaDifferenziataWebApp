@@ -26,7 +26,7 @@ export default {
   methods: {
     login() {
       netlify.init();
-      netlifyIdentity.open(); // open the modal
+      netlify.open(); // open the modal
     }
   }
 };
