@@ -4,7 +4,7 @@
     <!-- ----HOME PAGE CREATION----- -->
     <!-- --------------------------- -->
 
-    <!-- ----image background with descritpion app----- -->
+    <!-- ----image background with descritpion app----- 
     <b-card
       overlay
       img-src="https://www.gstatic.com/earth/social/00_generic_facebook-001.jpg"
@@ -13,8 +13,21 @@
       title="ECOLOC WEB APPLICATION"
       sub-title="This web application allows you to find ecostations and monitor your contribution to the world!
       Results graphs and trophies are waiting for you!"
-    ></b-card>
-    <button @click="login">ciaoneee</button>
+    ></b-card> 
+    <button @click="login">ciaoneee</button>-->
+    <header>
+      <div class="welcome-title">
+        <h1>ECOLOC WEB APPLICATION</h1>
+        <h3>
+          This web application allows you to find ecostations and monitor your contribution to the world!
+          Results graphs and trophies are waiting for you!
+        </h3>
+        <p style="height:60px;"></p>
+        <b-button variant="primary">find an ecostation</b-button>
+        <h3>Or</h3>
+        <b-button variant="primary">visualize statistics</b-button>
+      </div>
+    </header>
   </div>
 </template>
 
@@ -43,6 +56,42 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+header {
+  height: 100vh;
+  background-image: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 0)),
+    url("./../assets/se.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.welcome-title {
+  position: absolute;
+  top: 35vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.welcome-title h1 {
+  color: #2c3e50;
+  font-size: 70ox;
+}
+.welcome-title h3 {
+  color: #2c3e50;
+  font-size: 18px;
+}
+@media screen and (max-width: 600px) {
+  .welcome-title {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+</style>
+
 
 
 

@@ -4,23 +4,36 @@
       <!-- ------------------------- -->
       <!-- ----NAVBAR CREATION------ -->
       <!-- ------------------------- -->
-      <b-navbar toggleable="lg" type="dark" variant="dark">
+      <b-navbar toggleable="lg" type="light" variant="dark">
         <b-navbar-brand href="#">
-          <router-link to="/">Home</router-link>
+          <router-link to="/">
+            <i class="fa fa-leaf"></i>
+          </router-link>
         </b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item href="#">
-              <router-link to="/ecolocmap">EcolocMAp</router-link>
+            <b-nav-item id="hom" href="#">
+              <router-link to="/">
+                <i class="fa fa-home"></i> Homepage
+              </router-link>
             </b-nav-item>
             <b-nav-item href="#">
-              <router-link to="/recycle">Recycle</router-link>
+              <router-link to="/ecolocmap">
+                <i class="fa fa-map-o"></i> EcolocMap
+              </router-link>
             </b-nav-item>
             <b-nav-item href="#">
-              <router-link to="/myresults">MyResults</router-link>
+              <router-link to="/recycle">
+                <i class="fa fa-recycle"></i> Recycle
+              </router-link>
+            </b-nav-item>
+            <b-nav-item href="#">
+              <router-link to="/myresults">
+                <i class="fa fa-trophy"></i> MyResults
+              </router-link>
             </b-nav-item>
           </b-navbar-nav>
 
@@ -30,10 +43,14 @@
               <router-link to="/settings">Settings</router-link>
             </b-nav-item>-->
             <b-nav-item href="#" right>
-              <router-link to="/account">Account</router-link>
+              <router-link to="/account">
+                <i class="fa fa-user"></i> Account
+              </router-link>
             </b-nav-item>
             <b-nav-item href="#" right>
-              <router-link to="/about">About</router-link>
+              <router-link to="/about">
+                <i class="fa fa-info"></i> About
+              </router-link>
             </b-nav-item>
           </b-navbar-nav>
         </b-collapse>
@@ -65,5 +82,9 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+router-link {
+  color: white;
 }
 </style>
