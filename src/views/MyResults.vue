@@ -42,15 +42,15 @@
         <!-- ----V-FOR THROPHIES CARDS ----- -->
         <b-card
           v-for="item in objects"
-          v-bind:key="item.title"
+          v-bind:key="item.tname"
           header=" "
           header-tag="header"
           footer=" "
           footer-tag="footer"
-          :title="item.title"
+          :title="item.tname"
         >
-          <b-img thumbnail fluid :src="item.image" alt="Image 1"></b-img>
-          <b-card-text>{{item.description}}.</b-card-text>
+          <b-img thumbnail fluid :src="item.timage" alt="Image 1"></b-img>
+          <b-card-text>{{item.tdescription}}.</b-card-text>
         </b-card>
       </b-card-group>
     </b-jumbotron>
@@ -81,25 +81,11 @@ export default {
       imballaggi: 0,
 
       results: [],
+      results1: [],
 
       sliding: null,
       //TROPHIES OBJECTS
-      objects: [
-        {
-          title: "Pro Organic Recycler",
-          description:
-            "This throphy show that you have recycled a lot of organic wastes. Great Work!",
-          image:
-            "https://previews.123rf.com/images/hooyacrusty/hooyacrusty0809/hooyacrusty080900001/3527491-beautiful-gold-trophy-isolated-on-white.jpg"
-        },
-        {
-          title: "Advanced Glass Recycler",
-          description:
-            "This throphy show that you have recycled a good amount of Glass wastes. Great Work!",
-          image:
-            "https://images-na.ssl-images-amazon.com/images/I/51by0GdUedL._SX425_.jpg"
-        }
-      ]
+      objects: []
     };
   },
   mounted() {
@@ -107,6 +93,7 @@ export default {
     //setInterval(() => {
     //  this.fetchData();
     //}, 3000);
+    this.getTrophies();
   },
   computed: {
     //funcntion that calculates the total kg material recycled
@@ -125,6 +112,33 @@ export default {
     }
   },
   methods: {
+    getTrophies() {
+      client
+        .fetch('*[_type == "trofei"]', {
+          mail: "encollini@gmail.com"
+        })
+        .then(response => {
+          console.log(response);
+          this.results1 = response;
+          for (let i = 0; i < this.results1.length; i++) {
+            if (this.results1[i].organicosoglia <= this.organico) {
+              this.objects.push(this.results1[i]);
+            }
+            if (this.results1[i].vetrocosoglia <= this.vetro) {
+              this.objects.push(this.results1[i]);
+            }
+            if (this.results1[i].cartasoglia <= this.carta) {
+              this.objects.push(this.results1[i]);
+            }
+            if (this.results1[i].imballaggisoglia <= this.imballaggi) {
+              this.objects.push(this.results1[i]);
+            }
+            if (this.results1[i].totalsoglia <= this.total) {
+              this.objects.push(this.results1[i]);
+            }
+          }
+        });
+    },
     fetchData() {
       client
         .fetch('*[_type == "rifiuti" && mail==$mail]', {
@@ -143,8 +157,6 @@ export default {
             this.carta += parseInt(this.results[i].carta);
             this.imballaggi += parseInt(this.results[i].imballaggi);
             this.vetro += parseInt(this.results[i].vetro);
-          }
-          {
           }
         });
     }
