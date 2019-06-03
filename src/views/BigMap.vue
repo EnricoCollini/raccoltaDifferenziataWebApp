@@ -11,7 +11,11 @@
         <!-- ---- layer ----- -->
         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
         <!-- ---- markers V-FOR JSON EXTERNAL FILE ----- -->
-        <l-marker v-for="item in objs.objects" v-bind:key="item.title" :lat-lng="item.coordinate">
+        <l-marker
+          v-for="item in results"
+          v-bind:key="item.indirizzo"
+          :lat-lng="[item.latitudine, item.longitudine]"
+        >
           <!-- ---- marker popup----- -->
           <l-popup>
             <p>Indirizzo: {{item.indirizzo}}</p>
@@ -53,6 +57,7 @@ L.Icon.Default.mergeOptions({
 
 //importing json marker file
 import jsn from "./../assets/ecostations";
+import { client } from "../utils/httpClient";
 //importing map leaflet stuff
 import { LMap, LTileLayer, LMarker, LPopup } from "vue2-leaflet";
 export default {
@@ -85,7 +90,9 @@ export default {
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
 
       //JSON OBJS TO GET THE OBJECTS
-      objs: jsn
+      objs: jsn,
+      //meglio con i marker dal cms
+      results: []
     };
   },
   //function called when this view is created
@@ -95,7 +102,16 @@ export default {
     //to log the external json file
     this.showJsonFile;
   },
+  mounted() {
+    this.fetchData();
+  },
   methods: {
+    fetchData() {
+      client.fetch('*[_type == "markers"]').then(response => {
+        console.log(response);
+        this.results = response;
+      });
+    },
     //log external json file function
     showJsonFile() {
       console.log(this.objs);

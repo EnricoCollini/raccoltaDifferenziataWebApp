@@ -17,24 +17,24 @@
         <!-- ----name section----- -->
         <b-card-body>
           <b-card-title>Name:</b-card-title>
-          <b-card-sub-title class="mb-2">Enrico Collini</b-card-sub-title>
+          <b-card-sub-title class="mb-2">{{this.results.nome}}</b-card-sub-title>
         </b-card-body>
 
         <b-list-group flush>
           <!-- ----username section----- -->
           <b-list-group-item>
-            <b-card-title>Username:</b-card-title>
-            <b-card-sub-title class="mb-2">enricoll</b-card-sub-title>
+            <b-card-title>Surname:</b-card-title>
+            <b-card-sub-title class="mb-2">{{this.results.cognome}}</b-card-sub-title>
           </b-list-group-item>
           <!-- ----email section----- -->
           <b-list-group-item>
             <b-card-title>e-mail:</b-card-title>
-            <b-card-sub-title class="mb-2">encollini@gmail.com</b-card-sub-title>
+            <b-card-sub-title class="mb-2">{{this.results.mail}}</b-card-sub-title>
           </b-list-group-item>
           <!-- ----gender section----- -->
           <b-list-group-item>
-            <b-card-title>Gender:</b-card-title>
-            <b-card-sub-title class="mb-2">Male</b-card-sub-title>
+            <b-card-title>Username:</b-card-title>
+            <b-card-sub-title class="mb-2">{{this.results.username}}</b-card-sub-title>
           </b-list-group-item>
         </b-list-group>
         <b-card-footer></b-card-footer>
@@ -50,7 +50,33 @@
 </template>
 
 <script>
-export default {};
+import { client } from "../utils/httpClient";
+export default {
+  data() {
+    return {
+      results: []
+    };
+  },
+  mounted() {
+    this.fetchData();
+    //setInterval(() => {
+    //  this.fetchData();
+    //}, 3000);
+    this.getTrophies();
+  },
+  methods: {
+    fetchData() {
+      client
+        .fetch('*[_type == "account" && mail==$mail]', {
+          mail: "encollini@gmail.com"
+        })
+        .then(response => {
+          console.log(response);
+          this.results = response[0];
+        });
+    }
+  }
+};
 </script>
 
 <style>

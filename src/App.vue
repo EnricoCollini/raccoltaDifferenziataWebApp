@@ -26,9 +26,9 @@
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <b-nav-item href="#" right>
+            <!-- <b-nav-item href="#" right>
               <router-link to="/settings">Settings</router-link>
-            </b-nav-item>
+            </b-nav-item>-->
             <b-nav-item href="#" right>
               <router-link to="/account">Account</router-link>
             </b-nav-item>
