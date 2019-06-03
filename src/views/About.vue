@@ -42,14 +42,14 @@
 
       <b-card-group deck>
         <b-card
-          title="Title"
+          title="Giulia"
           img-src="https://markethax.com/generador-de-buyer-persona/img/avatar_6.png"
           img-alt="Image"
           img-top
         >
           <b-card-text>
-            This is a wider card with supporting text below as a natural lead-in to additional content.
-            This content is a little bit longer.
+            Giulia is a studen that lives in an appartment with other students.
+            She being an eco-friendly person has convinced her friends to recycling.
           </b-card-text>
           <div slot="footer">
             <small class="text-muted"></small>
@@ -57,24 +57,30 @@
         </b-card>
 
         <b-card
-          title="Title"
+          title="Mario"
           img-src="https://markethax.com/generador-de-buyer-persona/img/avatar_1.png"
           img-alt="Image"
           img-top
         >
-          <b-card-text>This card has supporting text below as a natural lead-in to additional content.</b-card-text>
+          <b-card-text>
+            Works in a bank and lives with his wife and two childrens in an appartment
+            where it is used the recycling method door at door.
+          </b-card-text>
           <div slot="footer">
             <small class="text-muted"></small>
           </div>
         </b-card>
 
         <b-card
-          title="Title"
+          title="Marco"
           img-src="https://markethax.com/generador-de-buyer-persona/img/avatar_7.png"
           img-alt="Image"
           img-top
         >
-          <b-card-text>This card has supporting text below as a natural lead-in to additional content.</b-card-text>
+          <b-card-text>
+            Marco is a gardner and whenever he can he tries to recycle the garden wastes in order
+            to obtain organic composting.
+          </b-card-text>
           <div slot="footer">
             <small class="text-muted"></small>
           </div>

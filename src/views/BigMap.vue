@@ -22,8 +22,8 @@
             <p>Orario: {{item.orario}}</p>
             <p>{{item.tipo}}</p>
             <b-button variant="primary">
-              <a :href="item.mapslink">
-                <i class="fa-fa-location-arrow">map indications</i>
+              <a :href="item.mapslink" style="color:white;">
+                <i class="fa-fa-location-arrow"></i>map indications
               </a>
             </b-button>
           </l-popup>
