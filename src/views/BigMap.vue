@@ -12,7 +12,7 @@
         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
         <!-- ---- markers V-FOR JSON EXTERNAL FILE ----- -->
         <l-marker
-          v-for="item in results"
+          v-for="item in risultati"
           v-bind:key="item.indirizzo"
           :lat-lng="[item.latitudine, item.longitudine]"
         >
@@ -21,6 +21,11 @@
             <p>Indirizzo: {{item.indirizzo}}</p>
             <p>Orario: {{item.orario}}</p>
             <p>{{item.tipo}}</p>
+            <b-button variant="primary">
+              <a :href="item.mapslink">
+                <i class="fa-fa-location-arrow">map indications</i>
+              </a>
+            </b-button>
           </l-popup>
         </l-marker>
       </l-map>
@@ -81,6 +86,7 @@ export default {
       lon: "",
       // results to api call to get lat and lon through address
       results: "",
+      risultati: "",
 
       //MAP DATAS
       zoom: 15,
@@ -102,14 +108,14 @@ export default {
     //to log the external json file
     this.showJsonFile;
   },
-  mounted() {
+  created() {
     this.fetchData();
   },
   methods: {
     fetchData() {
       client.fetch('*[_type == "markers"]').then(response => {
         console.log(response);
-        this.results = response;
+        this.risultati = response;
       });
     },
     //log external json file function
