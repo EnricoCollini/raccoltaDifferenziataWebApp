@@ -83,7 +83,13 @@
                   </b-form-group>
 
                   <!-- ----SUBMIT BUTTON----- -->
-                  <b-button @click.prevent="onSubmit" variant="primary">Submit</b-button>
+                  <b-button @click="onSubmit" variant="primary">Submit</b-button>
+                  <b-toast
+                    id="example"
+                    title="Request..."
+                    static
+                    no-auto-hide
+                  >Request sent correctly</b-toast>
                 </b-form>
               </b-card-body>
             </b-col>
@@ -120,22 +126,28 @@ export default {
 
   methods: {
     // SUMBIT FORM FUNCTION
-    onSubmit() {
+    onSubmit(evt) {
       let { carta, organico, imballaggi, vetro } = this.form;
+      if (carta == 0 && organico == 0 && imballaggi == 0 && vetro == 0) {
+        console.log("error");
+      } else {
+        evt.preventDefault();
 
-      client
-        .create({
-          _type: "rifiuti",
-          carta: parseInt(carta),
-          dataRiciclaggio: new Date(),
-          imballaggi: parseInt(imballaggi),
-          mail: "encollini@gmail.com",
-          organico: parseInt(organico),
-          vetro: parseInt(vetro)
-        })
-        .then(res => {
-          console.log(`form was created, document ID is ${res._id}`);
-        });
+        client
+          .create({
+            _type: "rifiuti",
+            carta: parseInt(carta),
+            dataRiciclaggio: new Date(),
+            imballaggi: parseInt(imballaggi),
+            mail: "encollini@gmail.com",
+            organico: parseInt(organico),
+            vetro: parseInt(vetro)
+          })
+          .then(res => {
+            console.log(`form was created, document ID is ${res._id}`);
+          });
+        this.$bvToast.show("example");
+      }
     },
     // ON RESET FORM FUNCTION
     onReset(evt) {

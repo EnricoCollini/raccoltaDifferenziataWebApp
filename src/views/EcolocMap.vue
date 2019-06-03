@@ -15,6 +15,7 @@
         ></b-form-input>
         <span>
           <b-button type="submit" variant="primary">Submit</b-button>
+          <b-toast id="example" title="Request sent">Search</b-toast>
         </span>
       </b-form>
     </div>
@@ -51,11 +52,25 @@ export default {
       this.lat = parseInt(this.results.features[0].geometry.coordinates[1]);
       console.log(this.lat, this.lon);
     },
+    makeToast(append = false) {
+      this.toastCount++;
+      this.$bvToast.toast(`This is toast number ${this.toastCount}`, {
+        title: "BootstrapVue Toast",
+        autoHideDelay: 5000,
+        appendToast: append
+      });
+    },
     onSubmit(evt) {
       evt.preventDefault();
       console.log(this.form.address);
       this.getCoordinates();
       this.$refs.mappa.setCenterMap();
+      this.$bvToast.toast(`example`, {
+        title: "Request",
+        autoHideDelay: 5000,
+        appendToast: append
+      });
+      this.makeToast();
     }
   }
 };

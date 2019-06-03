@@ -23,9 +23,13 @@
           Results graphs and trophies are waiting for you!
         </h3>
         <p style="height:60px;"></p>
-        <b-button variant="primary">find an ecostation</b-button>
+        <b-button variant="dark">
+          <router-link to="/ecolocmap">find an ecostation</router-link>
+        </b-button>
         <h3>Or</h3>
-        <b-button variant="primary">visualize statistics</b-button>
+        <b-button variant="dark">
+          <router-link to="/myresults">visualize statistics</router-link>
+        </b-button>
       </div>
     </header>
   </div>
@@ -49,7 +53,6 @@ export default {
         console.log("già loggato");
         return;
       }
-
       netlify.init();
       netlify.open(); // open the modal
     }
@@ -65,11 +68,12 @@ header {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  position: relative;
 }
 
 .welcome-title {
   position: absolute;
-  top: 35vh;
+  top: 260px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -85,9 +89,14 @@ header {
 @media screen and (max-width: 600px) {
   .welcome-title {
     position: absolute;
-    top: 35%;
+    top: 260px;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+  header {
+    position: relative;
+    z-index: 0;
   }
 }
 </style>
