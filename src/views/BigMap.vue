@@ -40,6 +40,7 @@
           required
           placeholder="address and city : "
           type="text"
+          
           style="max-width:40%;"
         ></b-form-input>
         <span>
