@@ -26,7 +26,7 @@
               ></b-card-img>
             </b-col>
             <b-col md="6">
-              <b-card-body title="Needfinding">
+              <b-card-body>
                 <!-- ----FORM CREATION----- -->
                 <b-form @submit="onSubmit" @reset="onReset" v-if="show">
                   <!-- ----ORGANIC INPUT----- -->

@@ -44,7 +44,9 @@
         ></b-form-input>
         <span>
           <!-- ----submit button----- -->
-          <b-button type="submit" variant="primary">Submit</b-button>
+          <b-button type="submit" variant="primary">
+            <i class="fa fa-search"></i>
+          </b-button>
         </span>
       </b-form>
     </div>
