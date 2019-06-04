@@ -24,7 +24,7 @@ The main tools used are:
 ## Application preview
 Below there are two gifs one for the desktop view and another for the mobile view.
 
-<img src="https://github.com/EnricoCollini/raccoltaDifferenziataWebApp/ height="500" />
+<img src="https://github.com/EnricoCollini/raccoltaDifferenziataWebApp/blob/master/videomobile-min.gif/" height="500" />
 
 ## Author
 * Collini Enrico
